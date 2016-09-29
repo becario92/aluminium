@@ -1,0 +1,98 @@
+<dom-module id="aluminium-app-styles">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            
+            paper-scroll-header-panel {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: var(--paper-grey-200, #eee);
+                /* background for toolbar when it is at its full size */
+                --paper-scroll-header-panel-full-header: {
+                    background-color: var(--paper-blue-600);
+                }
+                ;
+                /* background for toolbar when it is condensed */
+                --paper-scroll-header-panel-condensed-header: {
+                    background-color: var(--paper-light-blue-600);
+                }
+                ;
+            }
+            
+            paper-toolbar {
+                /* custom toolbar height */
+                height: 256px;
+                background-color: transparent;
+                overflow: visible;
+            }
+            
+            paper-icon-button {
+                margin: 0 8px;
+                --paper-icon-button-ink-color: white;
+            }
+            
+            .bottom-text {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                font-size: 20px;
+                padding-bottom: 10px;
+            }
+            
+            .subtitle {
+                padding-top: 4px;
+                font-size: 16px;
+                color: #ccc;
+            }
+            
+            .bookmark {
+                position: absolute;
+                bottom: -24px;
+                right: 24px;
+                fill: #4285f4;
+                height: 48px;
+                width: 48px;
+            }
+            
+            .content {
+                padding: 16px 10px 16px 50px;
+            }
+            
+            .indent {
+                margin-left: 60px;
+            }
+            
+            .spacer {
+                @apply(--layout-flex);
+            }
+            
+            paper-drawer-panel {
+                --paper-drawer-panel-right-drawer-container: {
+                    background-color: white;
+                };
+            }
+
+            paper-drawer-panel [drawer] {
+                border-right: 1px solid var(--google-grey-300);
+            }
+
+            paper-drawer-panel [right-drawer] [drawer] {
+                border-left: 1px solid var(--google-grey-300);
+            }
+            
+            button {
+                display: block;
+                line-height: 40px;
+                background-color: transparent;
+                border: none;
+                font-size: 14px;
+                margin: 20px;
+            }
+
+        </style>
+    </template>
+</dom-module>
