@@ -11,7 +11,8 @@
 <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
-<link rel="import" href="sample-content.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="aluminium-app-styles.html">
 
 <dom-module id="aluminium-app">
@@ -35,10 +36,16 @@
         </paper-toolbar>
 
         <div class="content flex-wrap">
-          <template is="dom-repeat" items="[[products]]" as="product">
-            <paper-card class="element" heading="Emmental" alt="Emmental">
+          <template is="dom-if" if="[[!_hasData]]">
+            <div class="centered"><paper-spinner active></paper-spinner></div>
+          </template>
+          <firebase-collection
+            location="https://aluminium-8ccbe.firebaseio.com/ventanas"
+            data="{{ventanas}}"></firebase-collection>
+          <template is="dom-repeat" items="[[ventanas]]" as="ventana">
+            <paper-card class="element" heading="[[ventana.__firebaseKey__]]" alt="Emmental">
               <div class="card-content">
-                [[product.content]]
+                [[ventana.precio]] / [[ventana.calidad]]
               </div>
               <div class="card-actions">
                 <paper-button>Share</paper-button>

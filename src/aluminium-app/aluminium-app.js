@@ -7,30 +7,29 @@
       is: 'aluminium-app',
 
       properties: {
-        products: {
-          type: Array,
-          value: function() {
-            return [
-              { content: "¿Quieres"},
-              { content: "ser"},
-              { content: "mi"},
-              { content: "amigo?"},
-              { content: "¿Quieres"},
-              { content: "ser"},
-              { content: "mi"},
-              { content: "amigo?"},
-              { content: "¿Quieres"},
-              { content: "ser"},
-              { content: "mi"},
-              { content: "amigo?"},
-              { content: "¿Quieres"},
-              { content: "ser"},
-              { content: "mi"},
-              { content: "amigo?"}
-            ]
-          }
+
+        ventanas: {
+          type: Array
         },
+        
+        _hasData: {
+          type: Boolean,
+          value: false
+        }
+
       },
+
+      listeners: {
+        'ventanas-changed': '_ventanasChanged'
+      },
+
+      _ventanasChanged: function(data) {
+        this._ventanasHasData();
+      },
+
+      _ventanasHasData: function(data) {
+        this.set('_hasData', this.ventanas && this.ventanas.length > 0);
+      }
 
     });
 
