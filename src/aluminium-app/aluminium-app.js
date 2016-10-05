@@ -7,9 +7,28 @@
       is: 'aluminium-app',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'aluminium-app',
+        products: {
+          type: Array,
+          value: function() {
+            return [
+              { content: "¿Quieres"},
+              { content: "ser"},
+              { content: "mi"},
+              { content: "amigo?"},
+              { content: "¿Quieres"},
+              { content: "ser"},
+              { content: "mi"},
+              { content: "amigo?"},
+              { content: "¿Quieres"},
+              { content: "ser"},
+              { content: "mi"},
+              { content: "amigo?"},
+              { content: "¿Quieres"},
+              { content: "ser"},
+              { content: "mi"},
+              { content: "amigo?"}
+            ]
+          }
         },
       },
 

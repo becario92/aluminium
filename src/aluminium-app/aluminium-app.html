@@ -9,6 +9,8 @@
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="sample-content.html">
 <link rel="import" href="aluminium-app-styles.html">
 
@@ -22,14 +24,36 @@
         <button tabindex="0" paper-drawer-toggle>Close drawer</button>
       </div>
       <paper-scroll-header-panel main condenses keep-condensed-header header-height="256" condensed-header-height="64">
-        <paper-toolbar>
+
+        <paper-toolbar class="header">
           <paper-icon-button icon="arrow-back"></paper-icon-button>
           <div class="spacer title">Title</div>
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <a class="budget bottom" target="_blank">
+            <paper-fab noink label="budget"></paper-fab>
+          </a>
         </paper-toolbar>
-        <div class="content">
-          <sample-content size="100"></sample-content>
+
+        <div class="content flex-wrap">
+          <template is="dom-repeat" items="[[products]]" as="product">
+            <paper-card class="element" heading="Emmental" alt="Emmental">
+              <div class="card-content">
+                [[product.content]]
+              </div>
+              <div class="card-actions">
+                <paper-button>Share</paper-button>
+                <paper-button>Explore!</paper-button>
+              </div>
+            </paper-card>
+          </template>
         </div>
+
+        <div class="footer">
+            <div class="title">Contact us</div>
+            <div class="title">Terms and conditions</div>
+            <div class="title">Legal policy</div>
+        </div>
+
       </paper-scroll-header-panel>
     </paper-drawer-panel>
   </template>
