@@ -7,7 +7,6 @@
                 -webkit-font-smoothing: antialiased;
                 color: white;
             }
-            
             paper-scroll-header-panel {
                 position: absolute;
                 top: 0;
@@ -24,31 +23,26 @@
                 }
                 ;
             }
-            
             paper-toolbar.header {
                 height: 256px;
                 background-color: transparent;
                 overflow: visible;
             }
-            
             paper-icon-button {
                 margin: 0 8px;
                 --paper-icon-button-ink-color: white;
             }
-            
             .bottom-text {
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
                 font-size: 20px;
                 padding-bottom: 10px;
             }
-            
             .subtitle {
                 padding-top: 4px;
                 font-size: 16px;
                 color: #ccc;
             }
-            
             .bookmark {
                 position: absolute;
                 bottom: -24px;
@@ -57,34 +51,23 @@
                 height: 48px;
                 width: 48px;
             }
-            
-            .content {
-                padding: 16px 20px 16px 20px;
-                min-height: calc(100% - 96px);
-            }
-            
             .indent {
                 margin-left: 60px;
             }
-            
             .spacer {
                 @apply(--layout-flex);
             }
-            
             paper-drawer-panel {
                 --paper-drawer-panel-right-drawer-container: {
                     background-color: white;
                 };
             }
-
             paper-drawer-panel [drawer] {
                 border-right: 1px solid var(--google-grey-300);
             }
-
             paper-drawer-panel [right-drawer] [drawer] {
                 border-left: 1px solid var(--google-grey-300);
             }
-
             button {
                 display: block;
                 line-height: 40px;
@@ -93,27 +76,6 @@
                 font-size: 14px;
                 margin: 20px;
             }
-
-            paper-card {
-                display: inline-block;
-                --paper-card-background-color: var(--paper-blue-800);
-                --paper-card-header-color: white;
-                text-align: center;
-                overflow: hidden;
-            }
-
-            .flex-wrap {
-                @apply(--layout-horizontal);
-                @apply(--layout-wrap);
-                @apply(--layout-around-justified);
-            }
-
-            .element {
-                width: 400px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-
             .footer {
                 @apply(--layout-horizontal);
                 @apply(--layout-wrap);
@@ -153,38 +115,49 @@
                 width: 85px;
             }
 
-            firebase-collection {
+            #menu-drawer {
                 display: none;
             }
 
-            .centered {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                /* bring your own prefixes */
-                transform: translate(-50%, -50%);
+            #menu-tabs {
+                display: flex;
+            }
+
+            .uppercase {
+                text-transform: uppercase;
+            }
+
+            paper-tab a {
+                @apply(--layout-horizontal);
+                @apply(--layout-center-center);
+                color: white;
+                text-decoration: none;
+            }
+
+            paper-tab:focus a,
+            paper-tab.iron-selected a {
+                font-weight:bold;
+                outline: 0;
             }
 
             @media screen and (max-width: 600px) {
-
-                .content {
-                    min-height: calc(100% - 153px);
-                }
-
                 .footer {
                     flex-direction: column;
                     height: initial;
                 }
-
                 .footer div {
                     text-align: center;
                     padding: 10px;
                 }
-
                 .budget {
                     display: none;
                 }
-
+                #menu-drawer {
+                    display: inline-block;
+                }
+                #menu-tabs {
+                    display: none;
+                }
             }
 
         </style>

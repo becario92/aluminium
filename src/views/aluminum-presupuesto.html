@@ -1,0 +1,109 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="aluminum-presupuesto">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+      }
+      .content {
+        padding: 16px 20px 16px 20px;
+        min-height: calc(100% - 96px);
+      }
+      .flex-wrap {
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-around-justified);
+      }
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+      }
+      firebase-collection {
+        display: none;
+      }
+      paper-card {
+        display: inline-block;
+        --paper-card-background-color: var(--paper-blue-800);
+        --paper-card-header-color: white;
+        text-align: center;
+        overflow: hidden;
+      }
+      .element {
+        width: 400px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      @media screen and (max-width: 600px) {
+        .content {
+          min-height: calc(100% - 153px);
+        }
+      }
+    </style>
+
+    <div class="content flex-wrap">
+      <template is="dom-if" if="[[!_hasData]]">
+        <div class="centered"><paper-spinner active></paper-spinner></div>
+      </template>
+      <firebase-collection
+        location="https://aluminium-8ccbe.firebaseio.com/ventanas"
+        data="{{ventanas}}"></firebase-collection>
+      <template is="dom-repeat" items="[[ventanas]]" as="ventana">
+        <paper-card class="element" heading="[[ventana.__firebaseKey__]]" alt="Emmental">
+          <div class="card-content">
+            [[ventana.precio]] / [[ventana.calidad]]
+          </div>
+          <div class="card-actions">
+            <paper-button>Share</paper-button>
+            <paper-button>Explore!</paper-button>
+          </div>
+        </paper-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'aluminum-presupuesto',
+
+      properties: {
+        
+        ventanas: {
+          type: Array
+        },
+        
+        _hasData: {
+          type: Boolean,
+          value: false
+        }
+
+      },
+
+      listeners: {
+        'ventanas-changed': '_ventanasChanged'
+      },
+
+      _ventanasChanged: function(data) {
+        this._ventanasHasData();
+      },
+
+      _ventanasHasData: function(data) {
+        this.set('_hasData', this.ventanas && this.ventanas.length > 0);
+      }
+
+    });
+
+  </script>
+
+</dom-module>
