@@ -99,7 +99,6 @@
                 pointer-events: none;
                 align-items: center;
             }
-
             .budget {
                 position: absolute;
                 top: 160px;
@@ -107,37 +106,34 @@
                 text-align: center;
                 text-decoration: none;
             }
-
             .budget paper-fab {
                 --paper-fab-background: var(--paper-light-blue-600);
                 box-shadow: 8px 8px 8px 0px rgba(60,71,78,0.24);
                 height: 85px;
                 width: 85px;
             }
-
             #menu-drawer {
                 display: none;
             }
-
             #menu-tabs {
                 display: flex;
             }
-
             .uppercase {
                 text-transform: uppercase;
             }
-
             paper-tab a {
                 @apply(--layout-horizontal);
                 @apply(--layout-center-center);
                 color: white;
                 text-decoration: none;
             }
-
             paper-tab:focus a,
             paper-tab.iron-selected a {
                 font-weight:bold;
                 outline: 0;
+            }
+            iron-pages {
+                min-height: calc(100% - 96px);
             }
 
             @media screen and (max-width: 600px) {
@@ -157,6 +153,9 @@
                 }
                 #menu-tabs {
                     display: none;
+                }
+                iron-pages {
+                    min-height: calc(100% - 153px);
                 }
             }
 
